@@ -150,24 +150,30 @@ dependencies {
     implementation "com.github.mrmike:ok2curl:0.8.0"
 }
 
-tasks.register('sourcesJar', Jar) {
-    archiveClassifier.set('sources')
-    from android.sourceSets.main.java.srcDirs
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//
+//                groupId = 'com.github.DevenderSaini151129'
+//                artifactId = 'Fynd'
+//                version = '3.12.0'
+//
+//                // Attach sources JAR properly
+//                artifact tasks.named('sourcesJar')
+//            }
+//        }
+//    }
+//}
 
-// --- Maven Publish configuration ---
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
-
-                groupId = 'com.github.DevenderSaini151129'
-                artifactId = 'Fynd'
-                version = '3.12.0'
-
-                // Attach sources JAR properly
-                artifact tasks.named('sourcesJar')
+                // no sourcesJar needed
             }
         }
     }

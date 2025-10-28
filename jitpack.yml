@@ -2,3 +2,5 @@ jdk:
   - openjdk17
 before_install:
   - sdk install java 17.0.14-amzn
+  - echo "org.gradle.jvmargs=-Xmx2g -XX:+UseParallelGC" >> gradle.properties
+  - echo "kotlin.daemon.jvmargs=-Xmx2g" >> gradle.properties

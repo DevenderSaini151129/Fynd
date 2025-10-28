@@ -132,3 +132,17 @@ dependencies {
     implementation "org.reactivestreams:reactive-streams:1.0.4"
     implementation "com.github.mrmike:ok2curl:0.8.0"
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.DevenderSaini151129'
+                artifactId = 'Fynd'
+                version = '1.0.1'
+            }
+        }
+    }
+}

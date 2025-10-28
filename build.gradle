@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:8.13.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20"
 
 //        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         // NOTE: Do not place your application dependencies here; they belong
@@ -133,7 +133,7 @@ dependencies {
     api "androidx.multidex:multidex:2.0.1"
     api "com.google.android.material:material:1.12.0"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
-    api "org.jetbrains.kotlin:kotlin-stdlib:2.0.21"
+    api "org.jetbrains.kotlin:kotlin-stdlib:2.2.20"
     api "com.google.dagger:dagger-android:2.57.2"
 
     api("com.squareup.retrofit2:retrofit:2.11.0") {

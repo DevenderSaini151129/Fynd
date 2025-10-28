@@ -133,6 +133,7 @@ dependencies {
     implementation "com.github.mrmike:ok2curl:0.8.0"
 }
 
+
 afterEvaluate {
     publishing {
         publications {
@@ -140,8 +141,11 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.DevenderSaini151129'
-                artifactId = 'Fynd'
-                version = '1.0.1'
+                artifactId = 'Fynd' // 👈 Name you use in implementation()
+                version = '3.12.0'
+
+                // Optional if you want sources/javadoc attached:
+                artifact(android.sourcesJar)
             }
         }
     }

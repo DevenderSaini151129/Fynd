@@ -164,7 +164,7 @@ class RequestSigner(val request: Request) {
     private fun canonicalHeaders(): String {
         val canonicalHeader = StringBuilder()
         updatedReq.headers.names().filter { headerName ->
-            val notInIgnoreHeader = !HEADERS_TO_IGNORE.contains(headerName.toLowerCase())
+            val notInIgnoreHeader = !HEADERS_TO_IGNORE.contains(headerName.lowercase(Locale.getDefault()))
             if (notInIgnoreHeader) {
                 var foundMatch = false
                 HEADERS_TO_INCLUDE.forEach { regExp ->
@@ -176,7 +176,7 @@ class RequestSigner(val request: Request) {
                 false
             }
         }.sortedBy { headerName ->
-            headerName.toLowerCase()
+            headerName.lowercase(Locale.getDefault())
         }.forEach { headerName ->
             updatedReq.headers.values(headerName).forEach { headerValue ->
                 if (canonicalHeader.isNotEmpty()) {
@@ -194,7 +194,7 @@ class RequestSigner(val request: Request) {
     private fun signedHeaders(): String {
         val headerNames = StringBuilder()
         updatedReq.headers.names().filter { headerName ->
-            val notInIgnoreHeader = !HEADERS_TO_IGNORE.contains(headerName.toLowerCase())
+            val notInIgnoreHeader = !HEADERS_TO_IGNORE.contains(headerName.lowercase(Locale.getDefault()))
             if (notInIgnoreHeader) {
                 var foundMatch = false
                 HEADERS_TO_INCLUDE.forEach { regExp ->
@@ -206,7 +206,7 @@ class RequestSigner(val request: Request) {
                 false
             }
         }.sortedBy { headerName ->
-            headerName.toLowerCase()
+            headerName.lowercase(Locale.getDefault())
         }.forEach { headerName ->
             if (headerNames.isNotEmpty()) {
                 headerNames.append(";")

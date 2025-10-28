@@ -4,6 +4,7 @@ import android.os.Build
 import android.util.Log
 import com.google.gson.GsonBuilder
 import com.moczul.ok2curl.CurlInterceptor
+import com.moczul.ok2curl.logger.Logger
 import com.sdk.common.HttpClient.getHttpLoggingInterceptor
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -130,7 +131,11 @@ class RetrofitHttpClient constructor(
             }
 
             if(logging.level != HttpLoggingInterceptor.Level.NONE) {
-                builder.addNetworkInterceptor(CurlInterceptor { message -> Log.v("Ok2Curl", message ?: "") })
+                builder.addNetworkInterceptor(CurlInterceptor(logger = object: Logger{
+                    override fun log(message: String) {
+                        Log.v("Ok2Curl", message ?: "")
+                    }
+                }))
             }
 
             if (null != headerList) {

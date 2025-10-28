@@ -112,35 +112,23 @@ repositories {
 }
 
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:multidex:1.0.3'
-    api 'com.google.android.material:material:1.13.0'
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
-    api 'org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.2.0"
+    api fileTree(dir: "libs", include: ["*.jar"])
+    api "androidx.multidex:multidex:2.0.1"
+    api "com.google.android.material:material:1.12.0"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
+    api "org.jetbrains.kotlin:kotlin-stdlib:2.2.20"
     api "com.google.dagger:dagger-android:2.57.2"
-    api('com.squareup.retrofit2:retrofit:3.0.0') {
-        // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
-        exclude module: 'okhttp'
-    }
-    api 'com.squareup.retrofit2:converter-gson:3.0.0'
-    api 'com.squareup.okhttp3:okhttp:5.2.1'
-    api 'com.squareup.okhttp3:okhttp-urlconnection:5.2.1'
-    api 'com.squareup.okhttp3:logging-interceptor:5.2.1'
-    api 'com.squareup.retrofit2:adapter-rxjava2:3.0.0'
-    implementation 'org.reactivestreams:reactive-streams:1.0.4'
-    implementation 'com.github.mrmike:ok2curl:0.8.0'
-}
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.DevenderSaini151129'
-                artifactId = 'Fynd'
-                version = 'master-SNAPSHOT'
-            }
-        }
+    api("com.squareup.retrofit2:retrofit:2.11.0") {
+        exclude module: "okhttp"
     }
+    api "com.squareup.retrofit2:converter-gson:2.11.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.11.0"
+
+    api("com.squareup.okhttp3:okhttp:5.2.1") { exclude group: "org.jspecify" }
+    api("com.squareup.okhttp3:okhttp-urlconnection:5.2.1") { exclude group: "org.jspecify" }
+    api("com.squareup.okhttp3:logging-interceptor:5.2.1") { exclude group: "org.jspecify" }
+
+    implementation "org.reactivestreams:reactive-streams:1.0.4"
+    implementation "com.github.mrmike:ok2curl:0.8.0"
 }
